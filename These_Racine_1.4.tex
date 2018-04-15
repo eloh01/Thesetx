@@ -1,0 +1,224 @@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  PREAMBULE/PREAMBLE %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%Layout%%%  Fonte / Police / Orthographe / Guillemets /Accentualtion
+
+\documentclass[a4paper ,12pt]{book}
+
+\usepackage[utf8]{inputenc} % or matin1 Q-1 Not sure of the difference between th both
+% With \usepackage[<encoding>]{inputenc} you can directly input accented and other characters. What's important is that <encoding> matches the encoding with which the file has been written and this depends on the operating system and the settings of the text editor.(wish setting ?)
+% Q-2: Is inputenc correctec withMac Osx/Texmaker ?
+% Codé en UTF-8,permet de reconnaître les lettres accentuées. Le nom à donner entre crochets dépend du système sur lequel je travaille
+
+\usepackage[polutonikogreek, french]{babel} % ou option francais et grec ancien. I'll have a few quotation in grec.
+\usepackage[babel]{csquotes} %% Permettent d'utiliser les guillemets sans espaces, le package csquotes s'occupe de l'espacement.
+
+\usepackage[T1]{fontenc}	%% Utilise les fontes de LaTeX en incluant les mots accentués.
+
+
+\usepackage{lmodern}  %% Font change / or \usepackage{mathptmx} or\usepackage{txfonts} for Times
+
+\usepackage[top=30mm, bottom=30mm ,left=30mm , right=30mm , includeheadfoot , bindingoffset=5mm]{geometry}	% a revoir ou bien margin=28mm
+
+
+
+%%%%% Heading & Page style %%%%%%%
+
+% This mayout shoud startwith the introduction
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%% Heading 
+\fancyhead[LE]{\textsc{{leftmark}}% champ gauche, page paire /Leftmark Nom du chapitre pour la classe book
+\fancyhead[RO]{rightmark} % champs droit, pages impaire / Rightmark nom section pour classe book.
+\renewcommand{headrulewidth}{1pt}
+
+%% Footpage %%%%
+\fancyfoot[C]{\textbf{\thepage}}
+\renewcommand{\footrulewidth}{0pt} % supprimela ligne horizontale
+
+%%%% Footnote Customize %%%%%
+% Remove rench footnote style included with {Babel} {French}
+\frenchsetup{FrenchFootnotes=false ,AutoSpaceFootnote=false}
+
+
+%%%%% Interligne %%%%
+\usepckage{setspace}
+\onehalfspacing    %% inside the body these{onehalfspace} or {spacing}{n} or {singlespace}
+
+
+%%%% Bibliography ref included in Tableofcontens %%%%%%%
+
+\usepackage[nottoc, notlof, notlot]{tocbibind}
+
+%%%% Index %%%%%%
+
+\usepackage{makeidx}
+\makeindex
+
+%%%% Glossary %%%%%
+\usepackage{glossary}   % Verifed if I have this package 
+\makeglocary 
+
+%%% Figures&Pictures %%%%%
+
+\usepackage{graphicx}  
+
+%%% Grec - Shortcut %%%%%%
+
+\newcommand*{\textgreek}[1]{%\foreignlanguage{greek}{1}%}
+\nexcommand*{\tg}[1]{\textgreek{#1}}
+% In the body the shortcut will be: \tg{Ulysse lettre latine correspondant aux lettre greques voir ENS...}
+
+%%% Temporary %%%%%%
+
+\usepackage{lipsum} %%%% Used with test version, Will be omitted later on
+
+%%% Introduction %%%%
+%This commad is to make sure that Introduction is included in the table of contentes -even so it is not numbered *
+%\addcontentsline{toc}{niveau}{\protect\numberline{}titre}
+\addcontensline{toc}{chapter}{\protect\numberline}{}introduction}
+
+%%%% Constunized Table of contence %%%%%%
+%Part Capital bold letters
+\renewcommand{\thechapter}{\Roman{chapter}} % Bold + capital letter
+\renewcommand{\thesection}{\arabic{section}} %Small capital letter schape +normal
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}} % only italic letter 
+%utiliser le package titlesec pour changer la fonte utilisée dans table of contente
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%                  CORPS DE DOCUMENT                        %%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%
+\frontmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%
+\include{Frontpage}
+\include{Researche_laboratory_presentation}
+\include{acknowledgments}
+\include{Résumé}    %% plus keywords
+\include{Abstract}
+\include{dedications}
+
+\tableofcontents
+\listoffigures
+
+%%%%%%%%%%%
+\mainmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%
+\clearpage
+
+\chapter*{introduction}
+\lipsum[2]
+
+\part{Title_1}
+\chapter{premier}
+\section{section de premier}
+\lipsum[3]
+\chapter{second}
+\section{section seconde}
+\lipsum[4]
+\lipsum[5]
+\part{Title_2}
+\chapter*{Conclusion generale}
+\lipsum[6]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\bibliographystyle{plain-fr} %% option fr les noms sont écritsen petite capitale
+\bibliography{name_files}  %% name files withou the extension .bib
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\printindex
+
+%%%%%%%%%%%
+\backmatter %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%
+
+\chapter{Title_Annexe_1}
+\input{file_name}
+\chapter{Title_Annex_2}
+\input{file_name}
+
+\loadglentries{glossaire-these}
+
+
+
+\end{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%  MINIPAGE   %%%%%%%%%%%%%%
+
+\begin{center}\begin{minipage}{10cm}   % Texte length 
+Blablababalabalblablabblabablalablablablablablablablablablablabablablablablablablablablablablablablablbbabalba
+\end{minipage}
+% To include a footnote in a Minipage used the commande \footnotemark{eg Freud S.}. instead of \footnote{eg Freud S.}.
+% Mettre la ponctuation après la note de bas de page
+% Q1- How to change the size of the lettre, if it has to be a smaller than the rest..   \small in a minipage ?
+
+%%%%%%%%%%  FOOTNOTE  %%%%%%%%%%%%%%
+
+\footnote{blablabla} % Commande
+
+%%%%%%%%%% Figures  %%%%%%%%%%%%%%%%%
+
+\begin{figure}[!h]   % top
+\centrering
+includegraphics{Pict01.jpg/FileName}
+\caption{Pict01, MaïMaï Gédéon}
+\label{Pict01}
+\end{figure}
+
+% edit figures h(here) t(top) b(botom) p (separat page)
+
+%%%%%%%%%%% Quotation Marks %%%%%%%%%%%
+
+\MakeAutoQuote{“}{“}			% Commande comment l'utiliser ? Mettre les guillemets français entre acolades
+
+%%%%%%%%%% Index  %%%%%%%%%%%%%
+
+% Pour obtenir une entrée dans l'index, il faut l'indiquer par la commande \index{mon_entree}.
+% Si accents: on utilise pour cela une arobase (@) et le code \index{sans_accents@avec_accents}
+
+%%%%%%%%% Appendix %%%%%%%%%%%
+% https://tex.stackexchange.com/questions/49643/making-appendix-for-thesis
+
+%%%%%%%% Glossary %%%%%%%%%%%
+
+%\usepackage{glossaries}
+%\makeglossaries
+%\loadglentries{glossaire-these}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

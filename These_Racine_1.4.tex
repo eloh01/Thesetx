@@ -4,7 +4,7 @@
 %%%%%  PREAMBULE/PREAMBLE %%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%Layout%%%  Fonte / Police / Orthographe / Guillemets /Accentualtion
+%%%%%%%%%%%%% Layout%%%%%%%%%%%%%  Fonte / Police / Orthographe / Guillemets /Accentualtion %%%%%
 
 \documentclass[a4paper ,12pt]{book}
 
@@ -13,42 +13,45 @@
 % Q-2: Is inputenc correctec withMac Osx/Texmaker ?
 % Codé en UTF-8,permet de reconnaître les lettres accentuées. Le nom à donner entre crochets dépend du système sur lequel je travaille
 
-\usepackage[polutonikogreek, french]{babel} % ou option francais et grec ancien. I'll have a few quotation in grec.
-\usepackage[babel]{csquotes} %% Permettent d'utiliser les guillemets sans espaces, le package csquotes s'occupe de l'espacement.
-
-\usepackage[T1]{fontenc}	%% Utilise les fontes de LaTeX en incluant les mots accentués.
-‰\package test
-
-
 \usepackage{lmodern}  %% Font change / or \usepackage{mathptmx} or\usepackage{txfonts} for Times
 
-\usepackage[top=30mm, bottom=30mm ,left=30mm , right=30mm , includeheadfoot , bindingoffset=5mm]{geometry}	% a revoir ou bien margin=28mm
+\usepackage[top=30mm, bottom=30mm ,left=30mm , right=30mm , includeheadfoot , bindingoffset=5mm]{geometry}	% to be verified or margin=28mm ?
+
+\usepackage[T1]{fontenc}	%% Utilise les fontes de LaTeX en incluant les mots accentués.
+
+\usepackage[babel]{csquotes} %% Permettent d'utiliser les guillemets sans espaces, le package csquotes s'occupe de l'espacement.
+
+\usepackage[polutonikogreek, french]{babel} % ou option francais et grec ancien. I'll have a few quotation in grec.
+
+%%% Grec - Shortcut %%%%%%
+
+\newcommand*{\textgreek}[1]{%\foreignlanguage{greek}{1}%}
+\nexcommand*{\tg}[1]{\textgreek{#1}}
+% In text body the shortcut will be: \tg{Ulysse lettre latine correspondant aux lettre greques voir ENS...}
 
 
+%%%%%%%%%%%%%% Heading & Page style %%%%%%%%%%%%%%%
 
-%%%%% Heading & Page style %%%%%%%
-
-% This mayout shoud startwith the introduction
+%%%% This layout shoud start with the introduction %%%%%
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
-%% Heading 
-\fancyhead[LE]{\textsc{{leftmark}}% champ gauche, page paire /Leftmark Nom du chapitre pour la classe book
+%%%% Heading %%%%
+\fancyhead[LE]{\textsc{{leftmark}} % champ gauche, page paire /Leftmark Nom du chapitre pour la classe book
 \fancyhead[RO]{rightmark} % champs droit, pages impaire / Rightmark nom section pour classe book.
 \renewcommand{headrulewidth}{1pt}
 
-%% Footpage %%%%
+%%%% Footpage %%%%
 \fancyfoot[C]{\textbf{\thepage}}
-\renewcommand{\footrulewidth}{0pt} % supprimela ligne horizontale
+\renewcommand{\footrulewidth}{0pt} % supprimela ligne horizontale en bas de page
 
 %%%% Footnote Customize %%%%%
-% Remove rench footnote style included with {Babel} {French}
+% Remove french footnote style included with {Babel} {French}
 \frenchsetup{FrenchFootnotes=false ,AutoSpaceFootnote=false}
 
-
-%%%%% Interligne %%%%
+%%%%% Interligne %%%%%
 \usepckage{setspace}
-\onehalfspacing    %% inside the body these{onehalfspace} or {spacing}{n} or {singlespace}
+\onehalfspacing    %% interligne 1,5 means inside the body these{onehalfspace} or {spacing}{n} or {singlespace}
 
 
 %%%% Bibliography ref included in Tableofcontens %%%%%%%
@@ -68,16 +71,6 @@
 
 \usepackage{graphicx}  
 
-%%% Grec - Shortcut %%%%%%
-
-\newcommand*{\textgreek}[1]{%\foreignlanguage{greek}{1}%}
-\nexcommand*{\tg}[1]{\textgreek{#1}}
-% In the body the shortcut will be: \tg{Ulysse lettre latine correspondant aux lettre greques voir ENS...}
-
-%%% Temporary %%%%%%
-
-\usepackage{lipsum} %%%% Used with test version, Will be omitted later on
-
 %%% Introduction %%%%
 %This commad is to make sure that Introduction is included in the table of contentes -even so it is not numbered *
 %\addcontentsline{toc}{niveau}{\protect\numberline{}titre}
@@ -90,6 +83,10 @@
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}} % only italic letter 
 %utiliser le package titlesec pour changer la fonte utilisée dans table of contente
 
+
+%%% Temporary %%%%%%
+
+\usepackage{lipsum} %%%% Used with test version, Will be omitted later on
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
